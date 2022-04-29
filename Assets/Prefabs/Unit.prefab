@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6664956583851859020
 Transform:
   m_ObjectHideFlags: 0
@@ -207,6 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  unitMovement: {fileID: 3607318809457296950}
   onSelected:
     m_PersistentCalls:
       m_Calls:
