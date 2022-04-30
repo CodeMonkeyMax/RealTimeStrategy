@@ -82,6 +82,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1635603672512396641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 45834183195225823}
+  m_Layer: 0
+  m_Name: ProjectileSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &45834183195225823
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635603672512396641}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.62, z: 1.98}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3265510817517762447}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2953636205999854652
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,11 +154,12 @@ GameObject:
   - component: {fileID: 3394046091397162715}
   - component: {fileID: 5529497838473286280}
   - component: {fileID: 5447198810122508468}
+  - component: {fileID: 6072173155422545911}
   - component: {fileID: 3607318809457296950}
   - component: {fileID: 4333551896348207752}
-  - component: {fileID: 6072173155422545911}
   - component: {fileID: 6425331121485334330}
   - component: {fileID: 369085432228740747}
+  - component: {fileID: -6818195181766986552}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -150,6 +181,7 @@ Transform:
   - {fileID: 6455895409141746210}
   - {fileID: 6664956583851859020}
   - {fileID: 3171421143903215546}
+  - {fileID: 45834183195225823}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -226,6 +258,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &6072173155422545911
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8794704406016083904}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.79, y: 2.2, z: 2.54}
+  m_Center: {x: 0, y: 1.13, z: -0.32}
 --- !u!114 &3607318809457296950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,7 +287,7 @@ MonoBehaviour:
   syncInterval: 0.1
   agent: {fileID: 5447198810122508468}
   targeter: {fileID: 369085432228740747}
-  chaseRange: 5
+  chaseRange: 9
 --- !u!114 &4333551896348207752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,19 +334,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!65 &6072173155422545911
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8794704406016083904}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.79, y: 2.2, z: 2.54}
-  m_Center: {x: 0, y: 1.13, z: -0.32}
 --- !u!114 &6425331121485334330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +363,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+--- !u!114 &-6818195181766986552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8794704406016083904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2bb8ea885f9270478477f5b4e81f34f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  targeter: {fileID: 369085432228740747}
+  projectilePrefab: {fileID: 8549435496064241656, guid: 2426aa90e43122648a988f7b1721bb71, type: 3}
+  projectileSpawnPoint: {fileID: 45834183195225823}
+  fireRange: 10
+  fireRate: 1
+  rotationSpeed: 20
 --- !u!1001 &6781659996490132937
 PrefabInstance:
   m_ObjectHideFlags: 0
