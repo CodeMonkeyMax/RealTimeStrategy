@@ -13,6 +13,13 @@ public class UnitMovement : NetworkBehaviour
 
     #region Server
 
+    public override void OnStartServer() {
+        GameOverHandler.ServerOnGameOver += ServerHandleGameOver;
+    }
+    public override void OnStopServer() {
+        GameOverHandler.ServerOnGameOver -= ServerHandleGameOver;
+    }
+
     [ServerCallback]
     private void Update() {
         Targetable target = targeter.GetTarget();
@@ -33,6 +40,7 @@ public class UnitMovement : NetworkBehaviour
         if ( agent.remainingDistance > agent.stoppingDistance ) { return; }
         agent.ResetPath();
     }
+
     [Command] 
     public void CmdMove(Vector3 position) {
         targeter.ClearTarget();
@@ -40,6 +48,10 @@ public class UnitMovement : NetworkBehaviour
             return;
         }
         agent.SetDestination(hit.position);
+    }
+    [Server]
+    private void ServerHandleGameOver() {
+        agent.ResetPath();
     }
     #endregion
 

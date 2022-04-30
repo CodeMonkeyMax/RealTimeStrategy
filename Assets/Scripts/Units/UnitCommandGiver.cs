@@ -8,10 +8,16 @@ public class UnitCommandGiver : MonoBehaviour
 {
     [SerializeField] private UnitSelectionHandler unitSelectionHandler = null;
     [SerializeField] private LayerMask layerMask = new LayerMask();
+
     private Camera mainCamera;
 
     private void Start() {
         mainCamera = Camera.main;
+        GameOverHandler.ClientOnGameOver += ClientHandleGameOver;
+    }
+
+    private void OnDestroy() {
+        GameOverHandler.ClientOnGameOver -= ClientHandleGameOver;
     }
 
     private void Update() {
@@ -39,5 +45,9 @@ public class UnitCommandGiver : MonoBehaviour
         foreach(Unit unit in unitSelectionHandler.SelectedUnits ) {
             unit.GetUnitMovement().CmdMove(point);
         }
+    }
+
+    private void ClientHandleGameOver(string winnerName) {
+        enabled = false;
     }
 }

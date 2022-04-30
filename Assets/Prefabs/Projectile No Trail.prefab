@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1902767926365480941}
   - component: {fileID: 9075346574116520787}
   - component: {fileID: 2228925881692887672}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 7590528855023598077}
   - component: {fileID: -8278981217866919589}
   - component: {fileID: -3448552257729174268}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Projectile No Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,6 +148,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   rb: {fileID: -8278981217866919589}
+  damageToDeal: 20
   destroyAfterSeconds: 5
   launchForce: 10
 --- !u!54 &-8278981217866919589
