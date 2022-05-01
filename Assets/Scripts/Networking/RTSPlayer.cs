@@ -8,11 +8,19 @@ public class RTSPlayer : NetworkBehaviour
 {
     [SerializeField] private Building[] buildings = new Building[0];
 
-    private List<Unit> myUnits = new List<Unit>();
+    [SyncVar(hook = nameof(ClientHandleResourcesUpdated))]
+    private int resources = 500;
+
+    public event Action<int> ClientOnResourcesUpdated;
+
+    private List<Unit>     myUnits = new List<Unit>();
     private List<Building> myBuildings = new List<Building>();
 
     public List<Unit>     GetMyUnits()     => myUnits;
     public List<Building> GetMyBuildings() => myBuildings;
+    public int            GetResources()   => resources;
+
+    public void SetResources(int resources) => this.resources = resources;
 
     #region Server
 
@@ -84,7 +92,10 @@ public class RTSPlayer : NetworkBehaviour
         Building.AuthorityOnBuildingSpawned   -= AuthorityHandleBuildingSpawned;
         Building.AuthorityOnBuildingDespawned -= AuthorityHandleBuildingDespawned;
     }
-    
+    private void ClientHandleResourcesUpdated(int oldBalance, int newBalance) {
+        ClientOnResourcesUpdated?.Invoke(newBalance);
+    }
+
     // These methods only called on Client's game
     private void AuthorityHandleUnitSpawned(Unit unit) { // You can totally just have one AuthorityHandleObjectSpawned() & Despawned with object-type-specific overloads
         myUnits.Add(unit);
