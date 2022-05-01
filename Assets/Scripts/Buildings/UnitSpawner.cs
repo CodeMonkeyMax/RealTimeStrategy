@@ -19,7 +19,7 @@ public class UnitSpawner : NetworkBehaviour, IPointerClickHandler
     [SerializeField] private float unitSpawnDuration = 5f;
 
     [SyncVar(hook = nameof(ClientHandleQueuedUnitsUpdated))]
-    private int queuedUnits;
+    private int queuedUnits = 0;
     [SyncVar]
     private float unitTimer;
 
