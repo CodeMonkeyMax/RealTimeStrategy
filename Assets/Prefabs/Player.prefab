@@ -63,6 +63,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  buildingBlockLayer:
+    serializedVersion: 2
+    m_Bits: 1281
   buildings:
   - {fileID: 3529840596276156831, guid: 1d31f6149ca94ad4fbffbb37c8817b84, type: 3}
   - {fileID: 3529840596276156831, guid: cce00dd052d3648439ecc82c785ced34, type: 3}
+  buildingRangeLimit: 8

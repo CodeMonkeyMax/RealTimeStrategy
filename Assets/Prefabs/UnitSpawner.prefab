@@ -1009,6 +1009,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8bced8e9ba253c4eb3977dd03370df5, type: 3}
+--- !u!4 &7420603870406815060 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9034437309939909600, guid: f8bced8e9ba253c4eb3977dd03370df5, type: 3}
+  m_PrefabInstance: {fileID: 1989327948212973236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8419894079747638411 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8017245390253877823, guid: f8bced8e9ba253c4eb3977dd03370df5, type: 3}
@@ -1020,11 +1025,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efbd11508312d349af3783210833819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &7420603870406815060 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9034437309939909600, guid: f8bced8e9ba253c4eb3977dd03370df5, type: 3}
-  m_PrefabInstance: {fileID: 1989327948212973236}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1068764747227006330 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1535306199389481934, guid: f8bced8e9ba253c4eb3977dd03370df5, type: 3}
@@ -1052,3 +1052,19 @@ MonoBehaviour:
   maxUnitQueue: 5
   spawnMoveRange: 7
   unitSpawnDuration: 5
+--- !u!114 &185768760679547246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068764747227006330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3f7d565efcd1614ab1d375c0d43c4f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  colorRenderers:
+  - {fileID: 173830462308731123}

@@ -6,22 +6,46 @@ using UnityEngine;
 
 public class RTSPlayer : NetworkBehaviour
 {
+    [SerializeField] private LayerMask buildingBlockLayer = new LayerMask();
     [SerializeField] private Building[] buildings = new Building[0];
+    [SerializeField] private float buildingRangeLimit = 5f;
 
     [SyncVar(hook = nameof(ClientHandleResourcesUpdated))]
     private int resources = 500;
 
     public event Action<int> ClientOnResourcesUpdated;
 
+    private Color          teamColor = new Color();
     private List<Unit>     myUnits = new List<Unit>();
     private List<Building> myBuildings = new List<Building>();
 
+    // Getters & Setters // # // # //////////////////////////////////////////////////////////////////////////////////////////////////////
+    #region Getters & Setters
+
+    public Color          GetTeamColor()   => teamColor;
     public List<Unit>     GetMyUnits()     => myUnits;
     public List<Building> GetMyBuildings() => myBuildings;
     public int            GetResources()   => resources;
 
-    public void SetResources(int resources) => this.resources = resources;
+    #endregion
 
+    public bool CanPlaceBuilding(BoxCollider buildingCollider, Vector3 point) {
+        
+        // Check if building placement area is clear
+        if ( Physics.CheckBox(point + buildingCollider.center, buildingCollider.size / 2, Quaternion.identity, buildingBlockLayer) ) {
+            return false;
+        }
+
+        // Check if building is within range of other player buildings
+        foreach ( Building building in myBuildings ) {
+            if ( ( point - building.transform.position ).sqrMagnitude <= buildingRangeLimit * buildingRangeLimit ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Server Side // # // # //////////////////////////////////////////////////////////////////////////////////////////////////////
     #region Server
 
     public override void OnStartServer() { // "Server version of Start()," NOT "when server starts."
@@ -38,6 +62,11 @@ public class RTSPlayer : NetworkBehaviour
         Building.ServerOnBuildingDespawned -= ServerHandleBuildingDespawned;
     }
 
+    [Server]
+    public void SetTeamColor(Color newTeamColor) => teamColor = newTeamColor;
+    [Server]
+    public void SetResources(int resources)      => this.resources = resources;
+
     [Command]
     public void CmdTryPlaceBuilding(int buildingId, Vector3 point) {
         Building buildingToPlace = null;
@@ -48,9 +77,17 @@ public class RTSPlayer : NetworkBehaviour
             }
         }
 
-        if( buildingToPlace == null ) { return; }
+        // Return if no building to place
+        if ( buildingToPlace == null ) { return; }
+        // Return if not enough money
+        if(resources < buildingToPlace.GetPrice() ) { return; }
+        // Do I still need this guy?
+        BoxCollider buildingCollider = buildingToPlace.GetComponent<BoxCollider>();
+        if(!CanPlaceBuilding(buildingCollider, point)) { return; }
+
         GameObject buildingInstance = Instantiate(buildingToPlace.gameObject, point, buildingToPlace.transform.rotation);
         NetworkServer.Spawn(buildingInstance, connectionToClient);
+        SetResources(resources - buildingToPlace.GetPrice());
     }
 
     private void ServerHandleUnitSpawned(Unit unit) {
@@ -62,18 +99,19 @@ public class RTSPlayer : NetworkBehaviour
         myUnits.Remove(unit);
     }
 
-    private void ServerHandleBuildingDespawned(Building building) {
+    private void ServerHandleBuildingSpawned(Building building) {
         if ( building.connectionToClient.connectionId != connectionToClient.connectionId ) { return; }
         myBuildings.Add(building);
     }
-
-    private void ServerHandleBuildingSpawned(Building building) {
+    private void ServerHandleBuildingDespawned(Building building) {
         if ( building.connectionToClient.connectionId != connectionToClient.connectionId ) { return; }
         myBuildings.Remove(building);
     }
 
+
     #endregion
 
+    // Client Side // # // # //////////////////////////////////////////////////////////////////////////////////////////////////////
     #region Client
 
     public override void OnStartAuthority() {

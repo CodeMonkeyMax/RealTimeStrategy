@@ -25,22 +25,32 @@ public class Building : NetworkBehaviour
     #region Server
 
     public override void OnStartServer() {
+        //Debug.Log($"{gameObject}: I have spawned."); // Old workaround
+        //Invoke(nameof(ServerBuildingSpawnEvent), 0.1f); // Old workaround
         ServerOnBuildingSpawned?.Invoke(this);
     }
 
     public override void OnStopServer() {
         ServerOnBuildingDespawned?.Invoke(this);
     }
+
+    public void ServerBuildingSpawnEvent() {
+        ServerOnBuildingSpawned?.Invoke(this);
+    }
     #endregion
 
     #region Client
 
     public override void OnStartAuthority() {
+        //Invoke(nameof(AuthorityBuildingSpawnEvent), 0.1f); // Old workaround
         AuthorityOnBuildingSpawned?.Invoke(this);
     }
     public override void OnStopAuthority() {
         AuthorityOnBuildingDespawned?.Invoke(this);
 
+    }
+    public void AuthorityBuildingSpawnEvent() {
+        AuthorityOnBuildingSpawned?.Invoke(this);
     }
     #endregion
 }
