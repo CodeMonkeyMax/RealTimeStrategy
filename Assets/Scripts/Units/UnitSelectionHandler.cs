@@ -18,6 +18,7 @@ public class UnitSelectionHandler : MonoBehaviour
     public List<Unit> SelectedUnits { get; } = new List<Unit>();
 
     private void Start() {
+        player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();// connection.identity is connection's "NetworkIdentity" component, present on Player GameObject.
         mainCamera = Camera.main;
         Unit.AuthorityOnUnitDespawned += AuthorityHandleUnitDespawned;
         GameOverHandler.ClientOnGameOver += ClientHandleGameOver;
@@ -29,13 +30,6 @@ public class UnitSelectionHandler : MonoBehaviour
     }
 
     private void Update() {
-        if (player == null ) {
-            try {
-                player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();// connection.identity is connection's "NetworkIdentity" component, present on Player GameObject.
-            } catch {
-                Debug.Log("Player null! :(");
-            }
-        }
         if ( Mouse.current.leftButton.wasPressedThisFrame ) {
             StartSelectionArea();
         } else if( Mouse.current.leftButton.wasReleasedThisFrame ) {

@@ -21,6 +21,7 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     private Renderer buildingRendererInstance;
 
     private void Start() {
+        player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
         mainCamera = Camera.main;
         iconImage.sprite = building.GetIcon();
         priceText.text   = building.GetPrice().ToString();
@@ -28,11 +29,6 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     }
 
     private void Update() {
-        if(player == null ) {
-            player = NetworkClient.connection.identity.GetComponent<RTSPlayer>();
-            Debug.Log("BuildingButton: player found!");
-        }
-
         if(buildingPreviewInstance == null) { return; }
         UpdateBuildingPreview();
     }

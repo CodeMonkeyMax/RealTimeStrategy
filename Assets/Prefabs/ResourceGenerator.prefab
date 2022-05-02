@@ -649,7 +649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3127468915462420267, guid: f8bced8e9ba253c4eb3977dd03370df5, type: 3}
       propertyPath: id
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3127468915462420267, guid: f8bced8e9ba253c4eb3977dd03370df5, type: 3}
       propertyPath: icon
@@ -657,7 +657,7 @@ PrefabInstance:
       objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 3127468915462420267, guid: f8bced8e9ba253c4eb3977dd03370df5, type: 3}
       propertyPath: price
-      value: 50
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 3127468915462420267, guid: f8bced8e9ba253c4eb3977dd03370df5, type: 3}
       propertyPath: buildingPreview
@@ -677,11 +677,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5052243361432844700, guid: f8bced8e9ba253c4eb3977dd03370df5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.17
+      value: 1.86
       objectReference: {fileID: 0}
     - target: {fileID: 5052243361432844702, guid: f8bced8e9ba253c4eb3977dd03370df5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5074064142251296049, guid: f8bced8e9ba253c4eb3977dd03370df5, type: 3}
       propertyPath: m_Size.x

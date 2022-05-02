@@ -13,8 +13,16 @@ public class RTSPlayer : NetworkBehaviour
 
     [SyncVar(hook = nameof(ClientHandleResourcesUpdated))]
     private int resources = 500;
+    [SyncVar(hook = nameof(AuthorityHandlePartyOwnerStateUpdated))]
+    private bool isPartyOwner = false;
+    [SyncVar(hook = nameof(ClientHandleDisplayNameUpdated))]
+    private string displayName;
 
+   
     public event Action<int> ClientOnResourcesUpdated;
+
+    public static event Action ClientOnInfoUpdated;
+    public static event Action<bool> AuthorityOnPartyOwnerStateUpdated;
 
     private Color          teamColor = new Color();
     private List<Unit>     myUnits = new List<Unit>();
@@ -23,6 +31,8 @@ public class RTSPlayer : NetworkBehaviour
     // Getters & Setters // # // # //////////////////////////////////////////////////////////////////////////////////////////////////////
     #region Getters & Setters
 
+    public bool           GetIsPartyOwner()    => isPartyOwner;
+    public string         GetDisplayName()     => displayName;
     public Transform      GetCameraTransform() => cameraTransform;
     public Color          GetTeamColor()       => teamColor;
     public List<Unit>     GetMyUnits()         => myUnits;
@@ -55,6 +65,8 @@ public class RTSPlayer : NetworkBehaviour
         Unit.ServerOnUnitDespawned += ServerHandleUnitDespawned;
         Building.ServerOnBuildingSpawned   += ServerHandleBuildingSpawned;
         Building.ServerOnBuildingDespawned += ServerHandleBuildingDespawned;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     public override void OnStopServer() {
@@ -65,9 +77,26 @@ public class RTSPlayer : NetworkBehaviour
     }
 
     [Server]
+    public void SetDisplayName(string displayName) {
+        this.displayName = displayName;
+    }
+
+    [Server]
+    public void SetPartyOwner(bool state) {
+        isPartyOwner = state;
+    }
+
+    [Server]
     public void SetTeamColor(Color newTeamColor) => teamColor = newTeamColor;
     [Server]
     public void SetResources(int resources)      => this.resources = resources;
+
+    [Command]
+    public void CmdStartGame() {
+        if ( !isPartyOwner ) { return; }
+
+        ( (RTSNetworkManager)NetworkManager.singleton ).StartGame();
+    }
 
     [Command]
     public void CmdTryPlaceBuilding(int buildingId, Vector3 point) {
@@ -125,8 +154,21 @@ public class RTSPlayer : NetworkBehaviour
         Building.AuthorityOnBuildingDespawned += AuthorityHandleBuildingDespawned;
     }
 
+    public override void OnStartClient() {
+        DontDestroyOnLoad(gameObject);
+        if ( NetworkServer.active ) { return; }
+        ((RTSNetworkManager)NetworkManager.singleton).Players.Add(this);
+    }
+
     public override void OnStopClient() {
+        ClientOnInfoUpdated?.Invoke();
+
         if ( !isClientOnly || !hasAuthority ) { return; }
+
+        ( (RTSNetworkManager)NetworkManager.singleton ).Players.Remove(this);
+
+        if ( !hasAuthority ) { return;
+        }
         Unit.AuthorityOnUnitSpawned   -= AuthorityHandleUnitSpawned;
         Unit.AuthorityOnUnitDespawned -= AuthorityHandleUnitDespawned;
         Building.AuthorityOnBuildingSpawned   -= AuthorityHandleBuildingSpawned;
@@ -135,8 +177,16 @@ public class RTSPlayer : NetworkBehaviour
     private void ClientHandleResourcesUpdated(int oldBalance, int newBalance) {
         ClientOnResourcesUpdated?.Invoke(newBalance);
     }
+    private void ClientHandleDisplayNameUpdated(string oldDisplayName, string newDisplayName) {
+        ClientOnInfoUpdated?.Invoke();
+    }
 
     // These methods only called on Client's game
+    private void AuthorityHandlePartyOwnerStateUpdated(bool oldState, bool newState) {
+        if ( !hasAuthority ) { return; }
+
+        AuthorityOnPartyOwnerStateUpdated?.Invoke(newState);
+    }
     private void AuthorityHandleUnitSpawned(Unit unit) { // You can totally just have one AuthorityHandleObjectSpawned() & Despawned with object-type-specific overloads
         myUnits.Add(unit);
     }

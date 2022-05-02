@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902506670714630273}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 10, z: -8.5}
+  m_LocalPosition: {x: 0, y: 13, z: -9.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5667275624886600427}
@@ -180,8 +180,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1281
   buildings:
-  - {fileID: 3529840596276156831, guid: 1d31f6149ca94ad4fbffbb37c8817b84, type: 3}
   - {fileID: 3529840596276156831, guid: cce00dd052d3648439ecc82c785ced34, type: 3}
+  - {fileID: 4392858277736520157, guid: 7dc8fc8e1af426146872e364ea041d01, type: 3}
+  - {fileID: 2179985347233192795, guid: 3fd5424d228247740a22c1afcd9dc4a5, type: 3}
   buildingRangeLimit: 8
 --- !u!114 &8727645902716930908
 MonoBehaviour:
@@ -200,5 +201,5 @@ MonoBehaviour:
   playerCameraTransform: {fileID: 705506127804744566}
   speed: 20
   screenBorderThickness: 20
-  screenXLimits: {x: -15, y: 15}
-  screenZLimits: {x: -25, y: 5}
+  screenXLimits: {x: -40, y: 40}
+  screenZLimits: {x: -56.5, y: 32}
