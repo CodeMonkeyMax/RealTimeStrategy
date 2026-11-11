@@ -3,7 +3,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,viewport-fit=cover">
 <meta name="theme-color" content="#111110"><title>Black Charter — Mobile Typography Prototype</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&family=IM+Fell+English+SC&family=Jim+Nightshade&family=Old+Standard+TT:wght@400;700&family=Pirata+One&family=Spectral:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&family=IM+Fell+English+SC&family=Jim+Nightshade&family=Old+Standard+TT:wght@400;700&family=Spectral:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--display:'Old Standard TT',Georgia,serif;--accent:'IM Fell English SC',Georgia,serif;--figures:'Old Standard TT',Georgia,serif;--body:'Spectral',Georgia,serif;--generator:'IM Fell English SC',Georgia,serif;--menu:'IM Fell DW Pica SC',Georgia,serif;--note:'Jim Nightshade',cursive;--wood1:#231d18;--wood2:#161311;--wood3:#32291f;--metal:#998260;--metalbright:#c5ad7e;--ink:#e9ddc8;--muted:#b4a38c;--line:#6d573a;--paper:#e0d2b9}
 *{box-sizing:border-box}html{background:#0d0f11}body{font-family:var(--body);margin:0;background:#0d0f11;color:var(--ink)}button,select{font-family:inherit}button{cursor:pointer}button:focus-visible,select:focus-visible{outline:2px solid #e2c183;outline-offset:2px}
@@ -41,10 +41,10 @@
 </head><body>
 <div id="lab">
   <div class="toolbelt">
-   <label for="treatment">THEME</label><select id="treatment" aria-label="Typography pairing"><option value="charter">01 · Charter House</option><option value="naval">02 · Admiralty Register</option><option value="ledger">03 · Merchant Register</option><option value="broadside">04 · Privateer Broadside</option><option value="weathered">05 · Weathered Press</option><option value="captain">06 · Captain’s Notes</option><option value="meridian">07 · Mariner’s Writ</option><option value="gothic">08 · Gothic Dispatch</option></select>
+   <label for="treatment">THEME</label><select id="treatment" aria-label="Typography pairing"><option value="naval">02 · Admiralty Register</option><option value="meridian">07 · Mariner’s Writ</option><option value="weathered">05 · Weathered Press</option><option value="captain">06 · Captain’s Notes</option></select>
    <label for="skin">SKIN</label><select id="skin" aria-label="UI material theme"><option value="timber">Timber</option><option value="paper">Ivory</option></select>
   </div>
-  <div class="toolbelt" style="border-top:1px solid #36312a"><label for="generator-font">GENERATOR NAMES</label><select id="generator-font" aria-label="Generator lettering"><option value="english">IM Fell English SC</option><option value="dw">IM Fell DW Pica SC</option></select></div>
+  <div class="toolbelt" style="border-top:1px solid #36312a"><label for="generator-font">GENERATOR NAMES</label><select id="generator-font" aria-label="Generator lettering"><option value="english">IM Fell English SC</option><option value="dw" selected>IM Fell DW Pica SC</option></select></div>
   <div class="runtime-indicator" id="runtime-indicator" role="status" aria-live="polite">Enabling interactive controls…</div>
   <div class="preview" id="preview">
    <div class="ornament"></div>
@@ -87,11 +87,11 @@
   </div>
   <section class="type-key" id="type-key" aria-live="polite">
     <div class="key-kicker">Live typography breakdown</div>
-    <h2 id="key-title">01 · Charter House</h2>
-    <p class="key-desc" id="key-description">The institutional baseline.</p>
+    <h2 id="key-title">02 · Admiralty Register</h2>
+    <p class="key-desc" id="key-description">Selected baseline: Old Standard TT, Spectral, and IM Fell DW Pica SC.</p>
     <div id="key-rows"></div>
     <div class="key-material" id="key-material">Material: dark timber &amp; distressed brass</div>
-    <div class="key-material" id="key-used" aria-live="polite">Fonts used in theme: Old Standard TT · Spectral · IM Fell English SC</div>
+    <div class="key-material" id="key-used" aria-live="polite">Fonts used in theme: Old Standard TT · Spectral · IM Fell DW Pica SC</div>
   </section>
 </div>
 <script>
@@ -101,25 +101,20 @@ window.switchScene=function(s,btn){document.getElementById('scene-image').src=sc
 const fonts={
   ostt:"'Old Standard TT',Georgia,serif",
   spectral:"'Spectral',Georgia,serif",
-  pirata:"'Pirata One',Georgia,serif",
   jim:"'Jim Nightshade',cursive",
   english:"'IM Fell English SC',Georgia,serif",
   dw:"'IM Fell DW Pica SC',Georgia,serif"
 };
 const fontNames={
-  ostt:'Old Standard TT',spectral:'Spectral',pirata:'Pirata One',
+  ostt:'Old Standard TT',spectral:'Spectral',
   jim:'Jim Nightshade',english:'IM Fell English SC',dw:'IM Fell DW Pica SC'
 };
 // The generator always uses one of the two IM Fell faces. Defaults use 3 fonts.
 const presets={
-  charter:{name:'01 · Charter House',description:'Formal charter lettering: imposing Old Standard TT capitals and numerals, Spectral copy, IM Fell English SC details.',display:'ostt',figures:'ostt',body:'spectral',accent:'english',menu:'ostt',note:'english',generator:'english'},
-  naval:{name:'02 · Admiralty Register',description:'Official old-style lettering with a rougher Pica imprint for folios, badges, and enterprise names.',display:'ostt',figures:'ostt',body:'spectral',accent:'dw',menu:'dw',note:'dw',generator:'dw'},
-  ledger:{name:'03 · Merchant Register',description:'Compare Spectral numerals against the same Old Standard TT masthead, with IM Fell English SC for the ledger.',display:'ostt',figures:'spectral',body:'spectral',accent:'english',menu:'english',note:'english',generator:'english'},
-  broadside:{name:'04 · Privateer Broadside',description:'Pirata One takes the lead on titles and proclamations. Spectral balances the drama; IM Fell English SC names the enterprises.',display:'pirata',figures:'spectral',body:'spectral',accent:'english',menu:'pirata',note:'english',generator:'english'},
-  weathered:{name:'05 · Weathered Press',description:'IM Fell DW Pica SC dominates the imprint while Old Standard TT provides clear, weighty counters.',display:'dw',figures:'ostt',body:'spectral',accent:'dw',menu:'dw',note:'dw',generator:'dw'},
-  captain:{name:'06 · Captain’s Notes',description:'IM Fell English SC masthead and generator names; a restrained Jim Nightshade for narrative annotations.',display:'english',figures:'spectral',body:'spectral',accent:'english',menu:'jim',note:'jim',generator:'english'},
-  meridian:{name:'07 · Mariner’s Writ',description:'A typographic ledger variant: Old Standard TT headings, Spectral figures, IM Fell DW Pica SC annotations.',display:'ostt',figures:'spectral',body:'spectral',accent:'dw',menu:'ostt',note:'dw',generator:'dw'},
-  gothic:{name:'08 · Gothic Dispatch',description:'Pirata One display with the rougher DW Pica accent; Spectral holds the numerical and reading load.',display:'pirata',figures:'spectral',body:'spectral',accent:'dw',menu:'dw',note:'dw',generator:'dw'}
+  naval:{name:'02 · Admiralty Register',description:'Preferred baseline: Old Standard TT for the masthead and figures, Spectral for readable text, and IM Fell DW Pica SC for names and ledger accents.',display:'ostt',figures:'ostt',body:'spectral',accent:'dw',menu:'dw',note:'dw',generator:'dw'},
+  meridian:{name:'07 · Mariner’s Writ',description:'Closest comparison to Admiralty Register: preserve Old Standard TT headings and IM Fell DW Pica SC accents; switch figures to Spectral and upgrade titles to Old Standard TT.',display:'ostt',figures:'spectral',body:'spectral',accent:'dw',menu:'ostt',note:'dw',generator:'dw'},
+  weathered:{name:'05 · Weathered Press',description:'Rougher letterpress treatment: IM Fell DW Pica SC for major headings and names, Old Standard TT for the numbers, Spectral for instructions.',display:'dw',figures:'ostt',body:'spectral',accent:'dw',menu:'dw',note:'dw',generator:'dw'},
+  captain:{name:'06 · Captain’s Notes',description:'Handwritten alternative: IM Fell English SC for the masthead and names, Spectral for figures and body, Jim Nightshade for notes and upgrade headings.',display:'english',figures:'spectral',body:'spectral',accent:'english',menu:'jim',note:'jim',generator:'english'}
 };
 const keyRows=[
  {label:'Masthead',key:'display',sample:'BLACK CHARTER',size:'21px',weight:'700'},
