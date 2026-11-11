@@ -3,9 +3,9 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,viewport-fit=cover">
 <meta name="theme-color" content="#111110"><title>Black Charter — Mobile Typography Prototype</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;600;700&family=IM+Fell+DW+Pica+SC&family=IM+Fell+English+SC&family=Jim+Nightshade&family=Libre+Caslon+Display&family=EB+Garamond:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Alegreya:wght@400;500;600&family=Libre+Baskerville:wght@400;700&family=Old+Standard+TT:wght@400;700&family=Pirata+One&family=Spectral:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&family=IM+Fell+English+SC&family=Jim+Nightshade&family=Libre+Caslon+Display&family=EB+Garamond:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Alegreya:wght@400;500;600&family=Libre+Baskerville:wght@400;700&family=Old+Standard+TT:wght@400;700&family=Pirata+One&family=Spectral:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--display:'Old Standard TT',Georgia,serif;--accent:'IM Fell English SC',Georgia,serif;--figures:'Old Standard TT',Georgia,serif;--body:'Spectral',Georgia,serif;--generator:'IM Fell English SC',Georgia,serif;--menu:'Cormorant SC',Georgia,serif;--note:'Jim Nightshade',cursive;--wood1:#231d18;--wood2:#161311;--wood3:#32291f;--metal:#998260;--metalbright:#c5ad7e;--ink:#e9ddc8;--muted:#b4a38c;--line:#6d573a;--paper:#e0d2b9}
+:root{--display:'Old Standard TT',Georgia,serif;--accent:'IM Fell English SC',Georgia,serif;--figures:'Old Standard TT',Georgia,serif;--body:'Spectral',Georgia,serif;--generator:'IM Fell English SC',Georgia,serif;--menu:'IM Fell DW Pica SC',Georgia,serif;--note:'Jim Nightshade',cursive;--wood1:#231d18;--wood2:#161311;--wood3:#32291f;--metal:#998260;--metalbright:#c5ad7e;--ink:#e9ddc8;--muted:#b4a38c;--line:#6d573a;--paper:#e0d2b9}
 *{box-sizing:border-box}html{background:#0d0f11}body{font-family:var(--body);margin:0;background:#0d0f11;color:var(--ink)}button,select{font-family:inherit}button{cursor:pointer}button:focus-visible,select:focus-visible{outline:2px solid #e2c183;outline-offset:2px}
 #lab{width:100%;margin:0 auto;max-width:470px}.toolbelt{padding:8px 9px;background:#111315;display:flex;gap:8px;align-items:center;border-bottom:1px solid #363433}.toolbelt select{color:#e4d8c5;border:1px solid #6a5947;border-radius:5px;background:#27231f;min-width:0;height:35px;font:14px var(--body);padding:0 6px;flex:1}.toolbelt label{font:11px var(--body);color:#b2a38f;white-space:nowrap}.preview{border:0;margin:0;background:#171410;min-height:750px;box-shadow:0 0 30px #0007;position:relative;overflow:hidden}.ornament{height:3px;background:linear-gradient(90deg,#4f3d2c,#ac9366,#4f3d2c)}
 .top{display:flex;align-items:center;gap:8px;justify-content:space-between;padding:8px 10px 6px;min-height:50px;background:linear-gradient(#28221c,#1b1714);border-bottom:1px solid #584833}.top .iconbtn{font-size:18px;min-width:37px;height:36px;background:linear-gradient(#423326,#261d17);border:1px solid #89704d;box-shadow:inset 0 0 0 1px #1a130f;color:#e5d5bb;border-radius:3px}.brand{text-align:center;flex:1;min-width:0}.brand .name{font:700 23px/1.05 var(--display);letter-spacing:.04em;white-space:nowrap}.brand .sub{font:10px var(--accent);letter-spacing:.06em;color:#bca47b;margin-top:2px;white-space:nowrap}.wallet{display:flex;gap:0;background:linear-gradient(#171411,#211b17);border-bottom:1px solid #5c482e}.wallet>div{padding:6px 10px 7px;flex:1;min-width:0}.wallet>div+div{border-left:1px solid #4a3c2c}.label{font:11px/1.1 var(--accent);letter-spacing:.04em;color:#b9a27e;text-transform:uppercase}.value{font:700 25px/1.2 var(--figures);color:#f0e5d1;font-variant-numeric:tabular-nums;letter-spacing:.01em}.wallet .rate{font-size:22px}.location{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 10px;background:#221c17}.location strong{font:17px var(--accent);letter-spacing:.02em;color:#e2d1b5}.location span{font:11px var(--body);color:#b3a087}
@@ -33,7 +33,7 @@
 <div id="lab">
   <div class="toolbelt">
    <label for="treatment">THEME</label><select id="treatment" aria-label="Typography pairing">
-    <option value="charter">01 · Charter House</option><option value="naval">02 · Naval Commission</option><option value="ledger">03 · Merchant Register</option><option value="broadside">04 · Privateer Broadside</option><option value="weathered">05 · Weathered Press</option><option value="captain">06 · Captain's Notes</option><option value="meridian">07 · Meridian Office</option><option value="gothic">08 · Gothic Dispatch</option>
+    <option value="charter">01 · Charter House</option><option value="naval">02 · Admiralty Register</option><option value="ledger">03 · Merchant Register</option><option value="broadside">04 · Privateer Broadside</option><option value="weathered">05 · Weathered Press</option><option value="captain">06 · Captain's Notes</option><option value="meridian">07 · Meridian Office</option><option value="gothic">08 · Gothic Dispatch</option>
    </select>
    <label for="skin">SKIN</label><select id="skin" aria-label="UI material theme"><option value="timber">Timber</option><option value="paper">Ivory</option></select>
   </div>
@@ -89,18 +89,18 @@ const scenes={diorama:'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA
 window.setScreen=function(s){document.getElementById('game').hidden=s!=='game';document.getElementById('menu').hidden=s!=='menu';document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.screen===s));};
 window.switchScene=function(s,btn){document.getElementById('scene-image').src=scenes[s];document.querySelectorAll('.location-controls button').forEach(b=>b.classList.toggle('active',b===btn));};
 const fonts={
- ostt:"'Old Standard TT',Georgia,serif", spectral:"'Spectral',Georgia,serif", cormorant:"'Cormorant SC',Georgia,serif", pirata:"'Pirata One',Georgia,serif", jim:"'Jim Nightshade',cursive", english:"'IM Fell English SC',Georgia,serif", dw:"'IM Fell DW Pica SC',Georgia,serif", caslon:"'Libre Caslon Display',Georgia,serif", eb:"'EB Garamond',Georgia,serif", newsreader:"'Newsreader',Georgia,serif", alegreya:"'Alegreya',Georgia,serif", baskerville:"'Libre Baskerville',Georgia,serif"
+ ostt:"'Old Standard TT',Georgia,serif", spectral:"'Spectral',Georgia,serif", pirata:"'Pirata One',Georgia,serif", jim:"'Jim Nightshade',cursive", english:"'IM Fell English SC',Georgia,serif", dw:"'IM Fell DW Pica SC',Georgia,serif", caslon:"'Libre Caslon Display',Georgia,serif", eb:"'EB Garamond',Georgia,serif", newsreader:"'Newsreader',Georgia,serif", alegreya:"'Alegreya',Georgia,serif", baskerville:"'Libre Baskerville',Georgia,serif"
 };
-const fontNames={ostt:'Old Standard TT',spectral:'Spectral',cormorant:'Cormorant SC',pirata:'Pirata One',jim:'Jim Nightshade',english:'IM Fell English SC',dw:'IM Fell DW Pica SC',caslon:'Libre Caslon Display',eb:'EB Garamond',newsreader:'Newsreader',alegreya:'Alegreya',baskerville:'Libre Baskerville'};
+const fontNames={ostt:'Old Standard TT',spectral:'Spectral',pirata:'Pirata One',jim:'Jim Nightshade',english:'IM Fell English SC',dw:'IM Fell DW Pica SC',caslon:'Libre Caslon Display',eb:'EB Garamond',newsreader:'Newsreader',alegreya:'Alegreya',baskerville:'Libre Baskerville'};
 const presets={
- charter:{name:'01 · Charter House',description:'Formal company stationery: strong classical capitals, practical figures, and engraved small-cap labels.',display:'ostt',figures:'ostt',body:'spectral',accent:'cormorant',menu:'cormorant',note:'jim'},
- naval:{name:'02 · Naval Commission',description:'Restrained naval authority, with tall engraved-looking headings and sharper numerical contrast.',display:'cormorant',figures:'ostt',body:'spectral',accent:'cormorant',menu:'ostt',note:'jim'},
- ledger:{name:'03 · Merchant Register',description:'Older printing-office character: historical Caslon headline forms with richer book typography.',display:'caslon',figures:'ostt',body:'eb',accent:'cormorant',menu:'caslon',note:'jim'},
+ charter:{name:'01 · Charter House',description:'Formal company stationery: strong classical capitals, practical figures, and weathered letterpress labels.',display:'ostt',figures:'ostt',body:'spectral',accent:'dw',menu:'eb',note:'jim'},
+ naval:{name:'02 · Admiralty Register',description:'Formal naval authority, with imposing old-style capitals, firm figures, and a rough-edged letterpress accent.',display:'ostt',figures:'baskerville',body:'newsreader',accent:'dw',menu:'eb',note:'jim'},
+ ledger:{name:'03 · Merchant Register',description:'Older printing-office character: historical Caslon headline forms with richer book typography.',display:'caslon',figures:'ostt',body:'eb',accent:'ostt',menu:'caslon',note:'jim'},
  broadside:{name:'04 · Privateer Broadside',description:'The most theatrical commercial notice. Gothic display lettering restrained by clear, ordinary text.',display:'pirata',figures:'ostt',body:'spectral',accent:'ostt',menu:'eb',note:'jim'},
- weathered:{name:'05 · Weathered Press',description:'Texture and broken-ink character in the masthead. Numerals stay disciplined and prominent.',display:'dw',figures:'ostt',body:'spectral',accent:'cormorant',menu:'ostt',note:'jim'},
- captain:{name:"06 · Captain's Notes",description:'A handwritten narrative accent, paired with a sober official title and more literary copy.',display:'ostt',figures:'ostt',body:'newsreader',accent:'cormorant',menu:'jim',note:'jim'},
- meridian:{name:'07 · Meridian Office',description:'Refined, readable maritime administration: quiet Caslon capitals, weightier book figures, and elegant labels.',display:'caslon',figures:'baskerville',body:'alegreya',accent:'cormorant',menu:'ostt',note:'jim'},
- gothic:{name:'08 · Gothic Dispatch',description:'A controlled blend of ceremonial gothic ornament, distinct figures, and measured literary body text.',display:'pirata',figures:'cormorant',body:'eb',accent:'cormorant',menu:'ostt',note:'jim'}
+ weathered:{name:'05 · Weathered Press',description:'Texture and broken-ink character in the masthead. Numerals stay disciplined and prominent.',display:'dw',figures:'ostt',body:'spectral',accent:'english',menu:'ostt',note:'jim'},
+ captain:{name:"06 · Captain's Notes",description:'A handwritten narrative accent, paired with a sober official title and more literary copy.',display:'ostt',figures:'ostt',body:'newsreader',accent:'dw',menu:'jim',note:'jim'},
+ meridian:{name:'07 · Meridian Office',description:'Refined, readable maritime administration: quiet Caslon capitals, weightier book figures, and elegant labels.',display:'caslon',figures:'baskerville',body:'alegreya',accent:'eb',menu:'ostt',note:'jim'},
+ gothic:{name:'08 · Gothic Dispatch',description:'A controlled blend of ceremonial gothic ornament, distinct figures, and measured literary body text.',display:'pirata',figures:'ostt',body:'eb',accent:'dw',menu:'ostt',note:'jim'}
 };
 const keyRows=[
  {label:'Masthead',key:'display',sample:'BLACK CHARTER',size:'21px',weight:'700'},
@@ -118,21 +118,3 @@ function renderTypographyKey(){
  Object.entries({display:values.display,figures:values.figures,body:values.body,accent:values.accent,menu:values.menu,note:values.note,generator:values.generator}).forEach(([k,v])=>document.documentElement.style.setProperty('--'+k,fonts[v]));
  document.getElementById('key-title').textContent=p.name;
  document.getElementById('key-description').textContent=p.description;
- const rows=document.getElementById('key-rows');rows.replaceChildren();
- keyRows.forEach(role=>{
-   const row=document.createElement('div');row.className='key-row';
-   const title=document.createElement('div');title.className='key-role';title.textContent=role.label;
-   const detail=document.createElement('div');detail.className='key-detail';
-   const nm=document.createElement('div');nm.className='key-name';nm.textContent=fontNames[values[role.key]];
-   const ex=document.createElement('div');ex.className='key-example';ex.textContent=role.sample;ex.style.fontFamily=fonts[values[role.key]];ex.style.fontSize=role.size;ex.style.fontWeight=role.weight;
-   detail.append(nm,ex);row.append(title,detail);rows.append(row);
- });
- document.getElementById('key-material').textContent='UI materials: '+(document.getElementById('skin').value==='timber'?'dark timber, distressed brass & ivory ink':'aged ivory paper, brass rules & dark ink');
-}
-document.getElementById('treatment').addEventListener('change',renderTypographyKey);
-document.getElementById('generator-font').addEventListener('change',renderTypographyKey);
-document.getElementById('skin').addEventListener('change',e=>{document.getElementById('preview').classList.toggle('theme-paper',e.target.value==='paper');renderTypographyKey()});
-document.querySelectorAll('.gen .hire').forEach(b=>b.onclick=()=>b.blur());
-document.querySelectorAll('.menutabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.menutabs button').forEach(a=>a.classList.remove('active'));b.classList.add('active')});
-renderTypographyKey();
-</script></body></html>
